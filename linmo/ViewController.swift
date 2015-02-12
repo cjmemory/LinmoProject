@@ -23,88 +23,84 @@ class ViewController: UIViewController {
 
     @IBAction func facebookLogIn(sender: UIButton) {
         
-        var permissions = ["public_profile", "user_birthday"]
+        var permissions = ["public_profile"]
         
         PFFacebookUtils.logInWithPermissions(permissions, {
             (user: PFUser!, error: NSError!) -> Void in
             if user == nil {
                 NSLog("Uh oh. The user cancelled the Facebook login.")
             } else if user.isNew {
+                // Check whether the user already saved to Parse
+                self.checkAndSaveUser()
                 NSLog("User signed up and logged in through Facebook!")
                 self.performSegueWithIdentifier("signInToAlreadySegue", sender: self)
             } else {
+                self.checkAndSaveUser()
                 NSLog("User logged in through Facebook!")
                 self.performSegueWithIdentifier("signInToAlreadySegue", sender: self)
             }
         })
-        
-        checkAndSaveUser()
     }
     
-    /* Check whether the user already exist in Parse table. */
+    /* Check whether user already exist and Save user facebook data into Parse "User" table */
     func checkAndSaveUser() -> Void {
-        var query = PFQuery(className: "User")
-        
-       //  query.whereKey("id", equalTo: )
-    }
-    
-    /* Save user facebook data into Parse "User" table */
-    func saveUserData() -> Void {
-        var user = PFObject(className: "User")
-        
-        var request = FBRequest.requestForMe();
-        request.startWithCompletionHandler { (connction, result, error) -> Void in
-            if(error == nil) {
-                var userData: NSDictionary = result as NSDictionary
-                
-                user["id"] = userData["id"] as NSString
-                user["firstName"] = userData["first_name"] as NSString
-                user["lastName"] = userData["last_name"] as NSString
-                user["gender"] = userData["gender"] as NSString
-                
-                user.saveInBackgroundWithBlock({ (success:Bool, error: NSError!) -> Void in
-                    if(success) {
-                        println("User has been saved into Parse successfully.")
+        getUserData({ (userData) -> Void in
+            
+            var query = PFQuery(className: "Account")
+            query.whereKey("facebookId", equalTo: userData["id"])
+            ///query.whereKey("facebookId", equalTo: "your grandpa")
+            
+            ////var objects = query.findObjects()
+            ////if(objects.count == 0) {
+            ////    println("User not in the Parse Account table")
+            ////}
+            
+            
+            query.findObjectsInBackgroundWithBlock({ (objects: [AnyObject]!, error: NSError!) -> Void in
+                if(error == nil) {
+                    if(objects.count == 0) {
+                        println("User not in Parse")
+                        var user = PFObject(className: "Account")
+                        user["facebookId"] = userData["id"]
+                        
+                        user.saveInBackgroundWithBlock({ (success:Bool, error: NSError!) -> Void in
+                            if(success) {
+                                println("User has been saved into Parse successfully.")
+                            } else {
+                                println("Failed to save user data into Parse.")
+                            }
+                        })
                     } else {
-                        println("Failed to save user data into Parse.")
+                    
+                        println("User already exist in Parse.")
+                        /// for object in objects {
+                            //// println(object.objectId)
+                        /// }
                     }
-                })
-            }
-        }
+                } else {
+                    println("Error: %@", error)
+                }
+            })
+            
+        })
         
     }
     
-    
-    /*
-    In Parse:
-    1. User Table: userid, username, gender, profileurl, fluentlanguagues, tolearnlanguagues, friendslist, blocklist
-    2. (birthday, workandeducation, interests, photosurllist) : all these need to get review from facebook
-    */
-    func getUserData() -> Void {
+    /* Get User data */
+    func getUserData(callback: (userData: AnyObject) -> Void) {
         var request = FBRequest.requestForMe();
-        request.startWithCompletionHandler { (connction, result, error) -> Void in
+        request.startWithCompletionHandler ({ (connection: FBRequestConnection!, result: AnyObject!, error: NSError!) -> Void in
             if(error == nil) {
-                var userData: NSDictionary = result as NSDictionary
-                
-                var userId: NSString = userData["id"] as NSString
-                var userName: NSString = userData["name"] as NSString
-                var userGender: NSString = userData["gender"] as NSString
-                
-                var userPicUrlString: NSString = NSString(format: "https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", userId)
-                var userPicUrl: NSURL = NSURL(string: userPicUrlString)!
-                
-                let cache = Shared.imageCache
-                let fetcher = NetworkFetcher<UIImage>(URL: userPicUrl)
-                cache.fetch(fetcher: fetcher).onSuccess { image in
-                    /*
-                    self.profileImageView.image = image
-                    self.profileImageView.layer.cornerRadius = self.profileImageView.frame.width / 2
-                    self.profileImageView.clipsToBounds = true
-                    self.profileImageView.layer.borderWidth = 0.3
-                    */
-                }
+                callback(userData: result as NSDictionary)
+            } else {
+                println("error to request facebook")
+                println("nimei")
+                println("nimei2")
+                println("nimei3")
             }
-        }
+        })
     }
+
+
 }
 

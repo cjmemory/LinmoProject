@@ -24,7 +24,6 @@ class queryResultListViewController : UIViewController {
         view.addSubview(profileImageView)
         
         getUserData()
-	/*Change*/
 
     }
     
