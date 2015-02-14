@@ -48,13 +48,6 @@ class ViewController: UIViewController {
             
             var query = PFQuery(className: "Account")
             query.whereKey("facebookId", equalTo: userData["id"])
-            ///query.whereKey("facebookId", equalTo: "your grandpa")
-            
-            ////var objects = query.findObjects()
-            ////if(objects.count == 0) {
-            ////    println("User not in the Parse Account table")
-            ////}
-            
             
             query.findObjectsInBackgroundWithBlock({ (objects: [AnyObject]!, error: NSError!) -> Void in
                 if(error == nil) {
@@ -62,6 +55,9 @@ class ViewController: UIViewController {
                         println("User not in Parse")
                         var user = PFObject(className: "Account")
                         user["facebookId"] = userData["id"]
+                        user["firstName"] = userData["first_name"]
+                        user["lastName"] = userData["last_name"]
+                        user["gender"] = userData["gender"]
                         
                         user.saveInBackgroundWithBlock({ (success:Bool, error: NSError!) -> Void in
                             if(success) {
@@ -71,11 +67,7 @@ class ViewController: UIViewController {
                             }
                         })
                     } else {
-                    
                         println("User already exist in Parse.")
-                        /// for object in objects {
-                            //// println(object.objectId)
-                        /// }
                     }
                 } else {
                     println("Error: %@", error)
@@ -94,9 +86,6 @@ class ViewController: UIViewController {
                 callback(userData: result as NSDictionary)
             } else {
                 println("error to request facebook")
-                println("nimei")
-                println("nimei2")
-                println("nimei3")
             }
         })
     }

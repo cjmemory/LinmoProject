@@ -1,113 +1,76 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eVU-fC-jxS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="sMp-gX-7dW">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Linmo-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="linmo" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ub4-77-pKa">
-                                <rect key="frame" x="215.5" y="414" width="169" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="GO2-Ai-5TU"/>
-                                    <constraint firstAttribute="height" constant="31" id="J9t-jE-jAL"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ub4-77-pKa">
+                                <rect key="frame" x="75" y="382" width="169" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="16"/>
                                 <state key="normal" title="Sign in with Facebook"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="GO2-Ai-5TU"/>
-                                    </mask>
-                                </variation>
                                 <connections>
                                     <action selector="facebookLogIn:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="WhD-4P-9W4"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="Ub4-77-pKa" secondAttribute="centerX" id="JeN-Hl-n4V"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Ub4-77-pKa" secondAttribute="bottom" constant="155" id="Rrr-jD-wIi"/>
-                            <constraint firstAttribute="centerX" secondItem="Ub4-77-pKa" secondAttribute="centerX" id="Une-w4-Bv7"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Ub4-77-pKa" secondAttribute="bottom" constant="156" id="vgn-0t-QRv"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="Une-w4-Bv7"/>
-                                <exclude reference="vgn-0t-QRv"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Linmo" id="hEt-dm-X6Z"/>
                     <connections>
-                        <segue destination="sMp-gX-7dW" kind="show" identifier="signInToAlreadySegue" id="NqU-p9-wSz"/>
-                        <segue destination="v7N-48-Z4T" kind="show" id="mFc-9H-dd3"/>
+                        <segue destination="sMp-gX-7dW" kind="modal" identifier="signInToAlreadySegue" id="NqU-p9-wSz"/>
+                        <segue destination="v7N-48-Z4T" kind="modal" id="mFc-9H-dd3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="491" y="-295"/>
+            <point key="canvasLocation" x="257.60000000000002" y="-279.26666666666665"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="k9K-zR-VgU">
             <objects>
                 <viewController id="v7N-48-Z4T" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kYG-j5-PnI"/>
-                        <viewControllerLayoutGuide type="bottom" id="fZj-AH-lSk"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ffa-cu-Q8i">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e0L-7Z-C6X">
-                                <rect key="frame" x="93" y="104" width="414" height="162"/>
+                            <pickerView contentMode="scaleToFill" id="e0L-7Z-C6X">
+                                <rect key="frame" x="93" y="104" width="134" height="162"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="e0L-7Z-C6X" secondAttribute="trailing" constant="77" id="ETd-xB-f5f"/>
-                            <constraint firstItem="e0L-7Z-C6X" firstAttribute="leading" secondItem="Ffa-cu-Q8i" secondAttribute="leadingMargin" constant="77" id="vli-Vu-c8q"/>
-                            <constraint firstItem="e0L-7Z-C6X" firstAttribute="top" secondItem="kYG-j5-PnI" secondAttribute="bottom" constant="84" id="yrx-yZ-qTI"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jzc-Eb-vDN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1177" y="-295"/>
+            <point key="canvasLocation" x="627.73333333333335" y="-279.26666666666665"/>
         </scene>
         <!--Login Judge View Controller-->
         <scene sceneID="pnh-XY-bpx">
             <objects>
                 <viewController id="eVU-fC-jxS" customClass="LoginJudgeViewController" customModule="linmo" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="gQo-nY-Req"/>
-                        <viewControllerLayoutGuide type="bottom" id="eFY-wT-7oa"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2HA-hn-RqA">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="show" identifier="signInSegue" id="lCw-yU-nnh"/>
-                        <segue destination="sMp-gX-7dW" kind="show" identifier="alreadySignInSegue" id="Sxs-Zd-KMO"/>
+                        <segue destination="vXZ-lx-hvc" kind="modal" identifier="signInSegue" id="lCw-yU-nnh"/>
+                        <segue destination="sMp-gX-7dW" kind="modal" identifier="alreadySignInSegue" id="Sxs-Zd-KMO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fmD-zU-2H1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-189" y="-295"/>
+            <point key="canvasLocation" x="-108.26666666666667" y="-279.26666666666665"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9cK-p2-xvg">
@@ -118,33 +81,102 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BvH-61-rew" kind="relationship" relationship="rootViewController" id="MIM-nq-UuU"/>
+                        <segue destination="BvH-61-rew" kind="relationship" relationship="rootViewController" id="jX2-ir-wg6"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P8H-YD-IKj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="47" y="707"/>
+            <point key="canvasLocation" x="26" y="666"/>
         </scene>
         <!--Linmo-->
         <scene sceneID="DiW-dX-Dec">
             <objects>
                 <viewController id="BvH-61-rew" customClass="queryResultListViewController" customModule="linmo" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="MVC-Au-dY9"/>
-                        <viewControllerLayoutGuide type="bottom" id="Xwu-eC-StZ"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ywe-Z9-HJr">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="55p-1k-twH">
+                                <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="matchCell" id="p7T-dS-ujW" customClass="QueryResultCell" customModule="linmo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p7T-dS-ujW" id="eah-CF-jf9">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="GDX-Jg-6ZD">
+                                                    <rect key="frame" x="20" y="5" width="70" height="70"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="km8-6c-1b6">
+                                                    <rect key="frame" x="120" y="10" width="194" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="hpL-cb-KMm">
+                                                    <rect key="frame" x="244" y="19" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hxx-7N-pmz">
+                                                    <rect key="frame" x="120" y="39" width="199" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="headImage" destination="GDX-Jg-6ZD" id="8AL-eb-aQk"/>
+                                            <outlet property="selectPic" destination="hpL-cb-KMm" id="xG7-au-ME9"/>
+                                            <outlet property="userage" destination="Hxx-7N-pmz" id="JO2-Jv-6ly"/>
+                                            <outlet property="username" destination="km8-6c-1b6" id="jwL-vc-bRZ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BvH-61-rew" id="fhd-Xa-Tw6"/>
+                                    <outlet property="delegate" destination="BvH-61-rew" id="PS2-VO-V9R"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Linmo" id="nxX-n0-qih"/>
+                    <navigationItem key="navigationItem" title="Linmo" id="6MI-Kw-GZS"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="resultTable" destination="55p-1k-twH" id="DmH-we-gPM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j7o-mi-7qf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="753" y="707"/>
+            <point key="canvasLocation" x="414" y="666"/>
+        </scene>
+        <!--Messages View Controller-->
+        <scene sceneID="Gdp-kR-kBL">
+            <objects>
+                <viewController id="HpP-zB-ObL" customClass="MessagesViewController" customModule="linmo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d9u-JD-Ce7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8gC-bD-6Iv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="805" y="666"/>
         </scene>
     </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="Sxs-Zd-KMO"/>
     </inferredMetricsTieBreakers>
